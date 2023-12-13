@@ -1,8 +1,9 @@
 const { addCommunity, 
     getAllCommunityHandler,
-    searchCommunity,
-    sendMessage,
-    receiveMessages } = require('./handler');
+    getCommunityByIdHandler,
+    // joinCommunity,
+    searchCommunities
+  } = require('./handler');
 
 const routes = [
     {
@@ -17,19 +18,19 @@ const routes = [
     },
     {
       method: 'GET',
-      path: '/community/search',
-      handler: searchCommunity,
+      path: '/community/{id}',
+      handler: getCommunityByIdHandler,
     },
-    {
-      method: 'POST',
-      path: '/community/{communityId}/message',
-      handler: sendMessage,
-    },
+    // {
+    //   method: 'POST',
+    //   path: '/community/{id}/join',
+    //   handler: joinCommunity,
+    // },
     {
       method: 'GET',
-      path: '/community/{communityId}/message',
-      handler: receiveMessages,
-    }
+      path: '/community/search',
+      handler: searchCommunities,
+    },
   ];
   
   module.exports = routes;
